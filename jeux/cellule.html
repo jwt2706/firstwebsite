@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html id='wallpaper'>
+
+<head>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width'>
+	<title>Jeux - Biologie</title>
+	<link href='../style.css' rel='stylesheet' type='text/css' />
+
+</head>
+
+<body>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'>
+
+	</script>
+	<script src='../script.js'>
+
+	</script>
+
+	<div id='points' style='position:absolute;font-family:play;font-size:24px;'></div> <!-- Affichage des points-->
+	<h2 id='titredujeux' style='font-family:play'>Place les noms des composants de cette cellule de levure dans les bonne places.</h2><!-- Voici le titre -->
+
+	<div id='container' style='position:static'>
+		<div id='cytosol' class='boitedereponse' ondrop='drop(event)' ondragover='allowDrop(event)' style='top:255px;'></div>
+		<div id='noyau' class='boitedereponse' ondrop='drop(event)' ondragover='allowDrop(event)' style='top:320px;'></div>
+		<div id='membrane-plasmique' class='boitedereponse' ondrop='drop(event)' ondragover='allowDrop(event)' style='top:390px;'></div>
+		<div id='paroi-cellulaire' class='boitedereponse' ondrop='drop(event)' ondragover='allowDrop(event)' style='top:455px;'></div>
+		<div id='mitochondrie' class='boitedereponse' ondrop='drop(event)' ondragover='allowDrop(event)' style='top:518px;'></div>
+		<div id='vacuole' class='boitedereponse' ondrop='drop(event)' ondragover='allowDrop(event)' style='top:580px;'></div>
+
+		<img id='cellule' style='position:static;width:1024px;height:764px;' src='jeux-images/cellule.png'>
+    <!-- source de l'image: https://commons.wikimedia.org/wiki/File:Simple_diagram_of_yeast_cell_(fr).svg?uselang=fr -->
+</div> <!-- Dans cette boîte div, on retrouve toutles les petites boîtes div qui peut prendre les réponses. -->
+
+<div id='banquedemots' class='boitedereponse' ondrop='drop(event)' ondragover='allowDrop(event)' style='width:700px;left:250px;top:830px;'>
+<img id='rparoi-cellulaire' src='jeux-images/cellules-reponses/paroi-cellulaire.png' draggable='true' ondragstart='drag(event)'>
+<img id='rcytosol' src='jeux-images/cellules-reponses/cytosol.png' draggable='true' ondragstart='drag(event)'>
+<img id='rnoyau' src='jeux-images/cellules-reponses/noyau.png' draggable='true' ondragstart='drag(event)'>
+<img id='rmembrane-plasmique' src='jeux-images/cellules-reponses/membrane-plasmique.png' draggable='true' ondragstart='drag(event)'>
+<img id='rmitochondrie' src='jeux-images/cellules-reponses/mitochondrie.png' draggable='true' ondragstart='drag(event)'>
+<img id='rvacuole' src='jeux-images/cellules-reponses/vacuole.png' draggable='true' ondragstart='drag(event)'>
+</div> <!-- Ici on il y a toutes les mots dans la banque de mots. -->
+<button onclick='refresh()' class='retourbutton' style='font-size:20px;'>
+  T'as fait une erreur?<br>Clique ici :)
+</button> <!-- Ceci est le bouton qui recharge la page. -->
+<br>
+<br>
+<a href='../jeux.html'>
+  <button class='retourbutton' style='font-size:14px;'>
+    Retour
+  </button> <!-- Ce bouton te rapporte à la page pour choisire un jeux. -->
+</a>
+	<script>
+var points = 0;
+document.getElementById('points').innerHTML = '  Points = 0/6';
+
+//Ceci va permettre au joueur de déposer une reponse.
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+//Ceci va imprimer dans la boîte ce que le joueur a déposé dedans.
+function drag(ev) {
+  ev.dataTransfer.setData('text', ev.target.id);
+}
+
+//Quand on dépose une réponse, ici on vérifie si c'est la bonne réponse à l'aide des id. Si 'r' + 'id de la boîte' = 'id de la réponse' (l'id de la réponse est la même mais avec un r au début), la réponse ne pourrait plus être bougé et va ajouter un point pour le joueur. Si le nombre de points est égal à 6, cela veut dire que le joueur a eu toutes les réponses dans les bon endroits et lui dit bravo.
+function drop(ev) {
+  ev.preventDefault();
+  ev.target.appendChild(document.getElementById(ev.dataTransfer.getData('text')));
+  if ('r' + ev.target.id == ev.dataTransfer.getData('text')) {
+    document.getElementById(ev.dataTransfer.getData('text')).draggable = false;
+    points++;
+    document.getElementById('points').innerHTML = '  Points = ' + points + '/6';
+    if (points === 6) {
+      alert('Bravo, tu as gangé!');
+    }
+  }
+}
+
+//Ceci va recharger la page si l'utilisateur a fait une erreur et doit recommencer.
+function refresh() {
+  location.reload();
+}
+	</script>
+</body>
+</html>

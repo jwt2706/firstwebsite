@@ -1,0 +1,222 @@
+::-webkit-scrollbar {
+	display: none;
+}
+
+@font-face {
+	font-family: 'bauer';
+	src: url(fonts/bauer.ttf);
+}
+
+@font-face {
+	font-family: 'play';
+  src: url(fonts/Play-Regular.ttf);
+}
+
+h1 {
+	color: white;
+	text-shadow: -2px 2px 0 #000;
+	font-family: bauer;
+	text-align: center;
+	font-size: 70px;
+}
+
+h2 {
+  font-family: play;
+  text-align: center;
+}
+
+p {
+	color: black;
+	text-align: left;
+	font-size: 20px;
+}
+
+form {
+  padding:20px;
+  border:2px solid rgb(0, 0, 0);
+  border-radius:4px;
+  font-family:play;
+  background-color: rgb(235, 235, 235);
+}
+
+input[type=text] {
+  padding:3px;
+  border: 1px solid rgb(102, 102, 102);
+  border-radius: 4px;
+}
+input[type=text]:focus {
+  background-color: rgb(250, 222, 222);
+}
+
+input[type=email] {
+  padding:3px;
+  border: 1px solid rgb(102, 102, 102);
+  border-radius: 4px;
+}
+input[type=email]:focus {
+  background-color: rgb(238, 255, 237);
+}
+
+input[type=tel] {
+  padding:3px;
+  border: 1px solid rgb(102, 102, 102);
+  border-radius: 4px;
+}
+input[type=tel]:focus {
+  background-color: rgb(238, 250, 255);
+}
+
+.retourbutton {
+  font-size: 48px;
+  font-family: play;
+  background-color: white;
+  color: black; 
+  border: 2px solid rgb(0, 140, 196);
+  transition-duration: 0.4s;
+  border-radius: 4px;
+}
+.retourbutton:hover {
+  background-color: rgb(0, 140, 196);
+  color: white;
+}
+
+.hrefbutton {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: rgb(0, 154, 206);
+  border: none;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  font-size: 24px;
+  padding: 15px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+  box-shadow: 0 9px rgb(168, 168, 168);
+}
+.hrefbutton span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+.hrefbutton span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+.hrefbutton:hover span {
+  padding-right: 25px;
+}
+.hrefbutton:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+.hrefbutton:active {
+  background-color: rgb(0, 122, 163);
+  box-shadow: 0 5px rgba(102, 102, 102, 0.966);
+  transform: translateY(4px);
+  transition-duration: 0s;
+}
+
+
+.hoverable {
+	height: 150px;
+	transition: height 1.5s;
+}
+.hoverable:hover {
+	height: 300px;
+}
+
+.center {
+margin:0pxauto;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.fadeanimation {
+	position: relative;
+	opacity: 0;
+	animation-fill-mode: forwards;
+	animation-name: fade;
+	animation-duration: 2s;
+}
+
+@keyframes fade {
+	0% {top: 100px;opacity: 0;}
+	100% {top: 0px;opacity: 1;}
+}
+
+
+#titleanimation {
+	position: fixed;
+	z-index: 1;
+	animation-name: title;
+	animation-duration: 7s;
+	left: 0px;
+	top: -10%;
+	transition: top 1s;
+}
+
+#titleanimation:hover {
+	top: -5%;
+}
+
+@keyframes title {
+	0% {top: -75%;}
+	50% {top: 0%;}
+	100% {top: -10%;}
+}
+
+#wallpaper {
+  animation-name: backgroundcolor;
+	animation-duration: 15s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes backgroundcolor {
+	0% {background-color: RGB(245, 179, 179);}
+	12.5% {background-color: RGB(245, 222, 179);}
+	25% {background-color: RGB(245, 242, 179);}
+	37.5% {background-color: RGB(213, 245, 179);}
+	50% {background-color: RGB(179, 245, 204);}
+	62.5% {background-color: RGB(179, 243, 245);}
+	75% {background-color: RGB(179, 183, 245);}
+	87.5% {background-color: RGB(233, 179, 245);}
+	100% {background-color: RGB(245, 179, 179);}
+}
+
+#txtbackground {
+	margin: auto;
+	border: 2px groove black;
+	border-radius: 8px;
+	background-color: white;
+	width: 70%;
+}
+
+.logo {
+	opacity: 0;
+	transform: translate(0, 10vh);
+	transition: all 1s;
+}
+
+.logo.visible {
+	opacity: 1;
+	transform: translate(0, 0);
+}
+
+.boitedereponse {
+  background-color:rgb(226, 226, 226);
+  position:absolute;
+  border: 2px solid black;
+  border-radius: 4px;
+  padding:3px;
+  width:205px;
+  height:50px;
+  left:160px;
+}

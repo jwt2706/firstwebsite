@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html id='wallpaper'>
+
+<head>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width'>
+	<title>Jeux - Géographie</title>
+	<link href='../style.css' rel='stylesheet' type='text/css' />
+
+</head>
+
+<body>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'>
+
+	</script>
+	<script src='../script.js'>
+
+	</script>
+	<div id='points' style='position:absolute;font-family:play;font-size:24px;'></div> <!-- Affichage des points -->
+	<h2 id='titredujeux' style='font-family:play'>Place les noms des Provinces et Territoires dans les bon endroits.</h2> <!-- Le titre -->
+	<div id='container' style='position:static'>
+		<div id='ile-du-prince-edouard' class='boitedereponse' ondrop='drop(event)' ondragover='allowDrop(event)' style='left:935px;top:610px;'></div>
+		<div id='nouveau-brunswick' class='boitedereponse' ondrop='drop(event)' ondragover='allowDrop(event)' style='left:765px;top:735px;'></div>
+		<div id='nouvelle-ecosse' class='boitedereponse' ondrop='drop(event)' ondragover='allowDrop(event)' style='left:945px;top:673px;'></div>
+		<div id='terre-neuve-et-labrador' class='boitedereponse' ondrop='drop(event)' ondragover='allowDrop(event)' style='left:800px;top:430px;'></div>
+		<div id='quebec' class='boitedereponse' ondrop='drop(event)' ondragover='allowDrop(event)' style='left:570px;top:510px;'></div>
+		<div id='ontario' class='boitedereponse' ondrop='drop(event)' ondragover='allowDrop(event)' style='left:450px;top:650px;'></div>
+		<div id='nunavut' class='boitedereponse' ondrop='drop(event)' ondragover='allowDrop(event)' style='left:400px;top:350px;'></div>
+		<div id='territoire-du-nord-ouest' class='boitedereponse' ondrop='drop(event)' ondragover='allowDrop(event)' style='top:345px;'></div>
+		<div id='yukon' class='boitedereponse' ondrop='drop(event)' ondragover='allowDrop(event)' style='left:5px;top:245px;'></div>
+		<div id='colombie-britannique' class='boitedereponse' ondrop='drop(event)' ondragover='allowDrop(event)' style='left:5px;top:480px;'></div>
+		<div id='alberta' class='boitedereponse' ondrop='drop(event)' ondragover='allowDrop(event)' style='left:90px;top:580px;'></div>
+		<div id='saskatchewan' class='boitedereponse' ondrop='drop(event)' ondragover='allowDrop(event)' style='left:220px;top:515px;'></div>
+		<div id='manitoba' class='boitedereponse' ondrop='drop(event)' ondragover='allowDrop(event)' style='left:320px;top:580px;'></div>
+
+		<img id='cellule' style='position:static;width:1024px;height:764px;' src='jeux-images/carte.png'>
+    <!-- source de l'image: https://commons.wikimedia.org/wiki/File:Carte_Politique_du_Canada.svg -->
+</div> <!-- Dans cette boîte div, on retrouve toutles les petites boîtes div qui peut prendre les réponses. -->
+<div id='banquedemots' class='boitedereponse' ondrop='drop(event)' ondragover='allowDrop(event)' style='height:60px;width:1400px;left:250px;top:830px;'>
+<img id='ryukon' src='jeux-images/carte-reponses/yukon.png' draggable='true' ondragstart='drag(event)'>
+<img id='rterritoire-du-nord-ouest' src='jeux-images/carte-reponses/territoire-du-nord-ouest.png' draggable='true' ondragstart='drag(event)'>
+<img id='rterre-neuve-et-labrador' src='jeux-images/carte-reponses/terre-neuve-et-labrador.png' draggable='true' ondragstart='drag(event)'>
+<img id='rsaskatchewan' src='jeux-images/carte-reponses/saskatchewan.png' draggable='true' ondragstart='drag(event)'>
+<img id='rquebec' src='jeux-images/carte-reponses/quebec.png' draggable='true' ondragstart='drag(event)'>
+<img id='rontario' src='jeux-images/carte-reponses/ontario.png' draggable='true' ondragstart='drag(event)'>
+<img id='rnunavut' src='jeux-images/carte-reponses/nunavut.png' draggable='true' ondragstart='drag(event)'>
+<img id='rnouvelle-ecosse' src='jeux-images/carte-reponses/nouvelle-ecosse.png' draggable='true' ondragstart='drag(event)'>
+<img id='rnouveau-brunswick' src='jeux-images/carte-reponses/nouveau-brunswick.png' draggable='true' ondragstart='drag(event)'>
+<img id='rmanitoba' src='jeux-images/carte-reponses/manitoba.png' draggable='true' ondragstart='drag(event)'>
+<img id='rile-du-prince-edouard' src='jeux-images/carte-reponses/ile-du-prince-edouard.png' draggable='true' ondragstart='drag(event)'>
+<img id='rcolombie-britannique' src='jeux-images/carte-reponses/colombie-britannique.png' draggable='true' ondragstart='drag(event)'>
+<img id='ralberta' src='jeux-images/carte-reponses/alberta.png' draggable='true' ondragstart='drag(event)'>
+</div> <!-- Ici on il y a toutes les mots dans la banque de mots. -->
+<button onclick='refresh()' class='retourbutton' style='font-size:20px;'>
+  T'as fait une erreur?<br>Clique ici :)
+</button> <!-- Ceci est le bouton qui recharge la page. -->
+<br>
+<br>
+<a href='../jeux.html'>
+  <button class='retourbutton' style='font-size:14px;'>
+    Retour
+  </button> <!-- Ce bouton te rapporte à la page pour choisire un jeux. -->
+</a>
+	<script>
+var points = 0;
+document.getElementById('points').innerHTML = '  Points = 0/13';
+
+//Ceci va permettre au joueur de déposer une réponse.
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+//Ceci va imprimer dans la boîte ce que le joueur a déposé dedans.
+function drag(ev) {
+  ev.dataTransfer.setData('text', ev.target.id);
+}
+
+//Quand on dépose une réponse, ici on vérifie si c'est la bonne réponse à l'aide des id. Si 'r' + 'id de la boîte' = 'id de la réponse' (l'id de la réponse est la même mais avec un r au début), la réponse ne pourrait plus être bougé et va ajouter un point pour le joueur. Si le nombre de points est égal à 13, cela veut dire que le joueur a eu toutes les réponses dans les bon endroits et on peut le féliciter. :)
+function drop(ev) {
+  ev.preventDefault();
+  ev.target.appendChild(document.getElementById(ev.dataTransfer.getData('text')));
+  if ('r' + ev.target.id == ev.dataTransfer.getData('text')) {
+    document.getElementById(ev.dataTransfer.getData('text')).draggable = false;
+    points++;
+    document.getElementById('points').innerHTML = '  Points = ' + points + '/13';
+    if (points === 13) {
+      alert('Bravo, tu as gangé!');
+    }
+  }
+}
+
+//Ceci va recharger la page si l'utilisateur a fait une erreur et doit recommencer.
+function refresh() {
+  location.reload();
+}
+	</script>
+</body>
+</html>

@@ -1,62 +1,122 @@
 <!DOCTYPE html>
+<!--SVP OUVRIRE LE SITE WEB SUR UN NOUVEL ONGLET MERCI-->
 <html id="wallpaper">
-  <head>
-    <meta charset="utf-8">
-    <meta name="Accueil" content="width=device-width">
-    <title>Acceuil</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
-    <style>
 
+<head>
+	<meta charset="utf-8">
+	<meta name="Accueil" content="width=device-width">
+	<title>Acceuil</title>
+	<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
 
-      #titleanimation {
-      position: fixed;
-      animation-name: title;
-      animation-duration: 7s;
-      left: 25%;
-      top: -10%;
-      }
-      @keyframes title {
-        0%   {top:-75%;}
-        50%  {top:0%;size:50%;}
-        100% {top:-10%;size:100%;}
-      } 
-
-
-
-      #wallpaper {
-        animation-name: backgroundcolor;
-        animation-duration: 15s;
-        animation-iteration-count: infinite;
-      }
-      @keyframes backgroundcolor {
-        0% {background-color: RGB(245, 179, 179);}
-        12.5% {background-color: RGB(245, 222, 179);}
-        25% {background-color: RGB(245, 242, 179);}
-        37.5% {background-color: RGB(213, 245, 179);}
-        50% {background-color: RGB(179, 245, 204);}
-        62.5% {background-color: RGB(179, 243, 245);}
-        75% {background-color: RGB(179, 183, 245);}
-        87.5% {background-color: RGB(233, 179, 245);}
-        100% {background-color: RGB(245, 179, 179);}
-      }
-
-
-
-
-    </style>
-  </head>
-  <body>
-    <div>
-
-      <script src="script.js"></script>
-      <div>
-        <img src="title.png" id="titleanimation">
+<body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="script.js"></script>
+  <div>
+		<div>
+			<img src="images/title.png" id="titleanimation">
       </div>
+      <h1 class = "fadeanimation">
+        Page D'Acceuil
+      </h1>
+      <br>
+      <div id="txtbackground" class = "fadeanimation">
+        <br>
+        <div class = "center">
+          <p style='font-family:play'>Bonjour!<br><br><br>Bienvenue sur mon site.<br><br>Ici tu peux trouver des jeux éducatifs que j'ai programmé pour mon cours ICS3U! Tout à été codé en HTML, CSS et JavaScript. :)<br><br>Profitez de votre visite!!<br><br><br>- Jacob</p>
+        </div>
+        <br><br>
+        <div class="center logo">
+          <div id="center">
+          <img src="images/HTML5.png" class = "logo hoverable"> </img> 
+          <img src="images/CSS3.png" class = "logo hoverable"> </img>
+          <img src="images/JAVASCRIPT.png" class = "logo hoverable"> </img>
+          </div>
+        </div>
+        <div>
+          <br><br><br><br><br><br><br><br><br>
+          <br><br>
+          <div class='center'>
+            <a style='margin-right:20px;' href='jeux.html'>
+              <button class='hrefbutton' style='vertical-align:middle'>
+                <span>Jeux</span>
+              </button>
+            </a>
+            <a style='margin-right:20px;' href='404.html'>
+              <button class='hrefbutton' style='vertical-align:middle'>
+                <span>Autre</span>
+              </button>
+            </a>
+          </div>
+          <br><br>
+          <div style="margin:10%;">
+              <h2 style="font-size:35px;font-family:bauer;margin:0px;"> Laisser un commentaire.. </h2>
+              <p style="font-size:10px;font-family;sans-serif;"> (Ceci ne sauvegarde pas, je voulais just l'essayer.) </p>
+              <form>
+                Nom: <input type="text" id="Nom" placeholder="Billy Bob Joe" value="">
+                <br>
+                Âge: <select id="Age">
+                  <option value=''>Choisis ton groupe d'âge.</option>
+                  <option value='1-5'>1 à 5 ans</option>
+                  <option value='6-12'>6 à 12 ans</option>
+                  <option value='13-19'>13 à 19 ans</option>
+                  <option value='20-35'>20 à 35 ans</option>
+                  <option value='36-45'>36 à 45 ans</option>
+                  <option value='46+'>46 ans et plus</option>
+                </select>
+                <br>
+                Email: <input type="email" id="Email" placeholder="exemple@exemple.com"   value="">
+                <br>
+                Téléphone: <input type="tel" id="Tel" placeholder="(123)-456-7890" value="">
+                <br>
+                Commentaire:
+                <br>
+                <input style='width:75%;' type="text" id="Commentaire" placeholder="Une  belle phrase avec des mots intéressants..." value="">
+                <br>
+              </form>
+            <br>
+            <button class='retourbutton' id="btnAffiche" style='font-size:16px;'onclick="affiche()">Soumettre</button>
+            <br><br><br><br>
+            <div style="font-size:20px;font-family:sans-serif;" id="nombredecommentaires"></div>
+            <br><br><br><br>
+              <div style="font-size:20px;font-family:play;" id="commentairePos"></div>
+              <div style='font-size:20px;font-family:play;' id='commentairePos2'></div>
+            <script>
+              var nombredecommentaires = 1;
+              document.getElementById("nombredecommentaires").innerHTML = "Il y a "+nombredecommentaires+" autre commentaire(s)."
+              function affiche() {
+                var nom= document.getElementById("Nom").value;
+                var age= document.getElementById("Age").value;
+                var email= document.getElementById("Email").value;
+                var tel= document.getElementById("Tel").value;
+                var commentaire= document.getElementById("Commentaire").value;
+                var affiche= document.getElementById("commentairePos");
+                var affiche2= document.getElementById('commentairePos2');
 
-<p>
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-</p>
+                if (nom==""||age==""||email==""||tel==""||commentaire=="") {
+                  var message= "Il manque des données!"
+                   nombredecommentaires = 1;
+                } else {
+                  var message= nom + 'a dit: ';  
+                  nombredecommentaires = 2;
+                }
+                affiche.innerHTML= message;
+                affiche.style.fontWeight = 'bold';
+                affiche2.innerHTML= commentaire;
+                document.getElementById("nombredecommentaires").innerHTML = "Il y a "+nombredecommentaires+" autre commentaire(s)."
 
+                nom= document.getElementById("Nom").value='';
+                age= document.getElementById("Age").value='';
+                email= document.getElementById("Email").value='';
+                tel= document.getElementById("Tel").value='';
+                commentaire= document.getElementById("Commentaire").value='';
+              }
+            </script>
+            <br><br><br>
+            <div style="font-size:20px;font-family:play;"><strong>Jonathan LeRandom a dit:</strong> <br>Je suis excité de pouvoir essayer les jeux! :D</div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>
